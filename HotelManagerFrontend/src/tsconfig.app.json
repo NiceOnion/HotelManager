@@ -5,7 +5,7 @@
     "types": []
   },
   "files": [
-    "Homepage/main.ts"
+    "main.ts"
   ],
   "include": [
     "**/*.d.ts"

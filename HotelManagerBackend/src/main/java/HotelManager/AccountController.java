@@ -12,6 +12,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 
 @RestController
+
+@CrossOrigin(origins = "${allowedOrigins}")
 @RequestMapping("Accounts")
 public class AccountController {
 
@@ -22,8 +24,6 @@ public class AccountController {
         this.repository = repository;
         this.assembler = assembler;
     }
-
-
 
     @GetMapping("All")
     CollectionModel<EntityModel<Account>> all() {
