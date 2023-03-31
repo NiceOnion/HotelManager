@@ -8,6 +8,7 @@ import {RouterModule} from "@angular/router";
 import { AccommodationListComponent } from './App/accomodation-list/accommodation-list.component';
 import { AccountListComponent } from './App/account-list/account-list.component';
 import { AppComponent } from './app.component';
+import { AccountDetailsComponent } from './app/account-details/account-details.component';
 
 @NgModule({
     imports: [
@@ -15,13 +16,15 @@ import { AppComponent } from './app.component';
         HttpClientModule,
         ReactiveFormsModule,
         RouterModule.forRoot([
-            { path: '', component: AccommodationListComponent},
+            { path: '', component: AccountListComponent},
+            { path: 'Account/:accountID', component: AccountDetailsComponent}
         ])
     ],
     declarations: [
         AccommodationListComponent,
         AccountListComponent,
-        AppComponent
+        AppComponent,
+        AccountDetailsComponent
   ],
     bootstrap: [
         AppComponent
