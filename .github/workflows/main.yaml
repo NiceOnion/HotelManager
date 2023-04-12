@@ -3,27 +3,30 @@ name: CI Pipeline
 on: 
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-angular:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkoout code
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-      - name: Install dependencies
-        run: npm install
-      - name: Build Angular application
-        run: npm run build
-      - name: Archive artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: angular-dist
-          path: dist/
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+    - name: Install dependencies
+      run: npm install HotelManagerFrontend/
+    - name: Print package.json file
+      run: cat HotelManagerFrontend/package.json
+    - name: Build Angular application
+      run: npm --prefix HotelManagerFrontend run build
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: angular-dist
+        path: HotelManagerFrontend/dist/
+
           
   build-spring-boot:
     needs: build-angular
@@ -52,7 +55,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: '14.x'
+        node-version: '16.x'
     - name: Install dependencies
       run: npm install
     - name: Run Angular unit tests
