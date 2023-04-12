@@ -17,8 +17,9 @@ jobs:
         node-version: '16.x'
     - name: Install dependencies
       run: npm install HotelManagerFrontend/
+    - name: Print package.json file
+      run: cat HotelManagerFrontend/package.json
     - name: Build Angular application
-      working-directory: .
       run: npm run build HotelManagerFrontend/
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
