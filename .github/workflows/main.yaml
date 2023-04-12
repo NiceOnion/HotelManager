@@ -18,7 +18,8 @@ jobs:
     - name: Install dependencies
       run: npm install HotelManagerFrontend/
     - name: Build Angular application
-      run: npm run build
+      working-directory: .
+      run: npm run build HotelManagerFrontend/
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
       with:
