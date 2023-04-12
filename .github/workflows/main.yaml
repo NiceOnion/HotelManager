@@ -20,7 +20,7 @@ jobs:
     - name: Print package.json file
       run: cat HotelManagerFrontend/package.json
     - name: Build Angular application
-      run: npm run build HotelManagerFrontend/
+      run: npm --prefix HotelManagerFrontend run build
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
       with:
