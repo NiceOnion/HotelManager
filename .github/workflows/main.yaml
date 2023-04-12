@@ -1,0 +1,86 @@
+name: CI Pipeline
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  build-angular:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkoout code
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: npm install
+      - name: Build Angular application
+        run: npm run build
+      - name: Archive artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: angular-dist
+          path: dist/
+          
+  build-spring-boot:
+    needs: build-angular
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Setup Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+    - name: Build Spring Boot application
+      run: ./mvnw clean package
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: spring-boot-jar
+        path: target/*.jar
+
+  test:
+    needs: [build-angular, build-spring-boot]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+    - name: Install dependencies
+      run: npm install
+    - name: Run Angular unit tests
+      run: npm run test
+    - name: Download Spring Boot JAR
+      uses: actions/download-artifact@v2
+      with:
+        name: spring-boot-jar
+        path: target/
+    - name: Run Spring Boot integration tests
+      run: java -jar target/*.jar --spring.profiles.active=test
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download Spring Boot JAR
+      uses: actions/download-artifact@v2
+      with:
+        name: spring-boot-jar
+        path: target/
+    - name: Deploy Spring Boot application
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DEPLOY_HOST }}
+        username: ${{ secrets.DEPLOY_USER }}
+        key: ${{ secrets.DEPLOY_KEY }}
+        script: |
+          sudo systemctl stop my-app.service
+          mv target/*.jar /opt/my-app/app.jar
+          sudo systemctl start my-app.service
