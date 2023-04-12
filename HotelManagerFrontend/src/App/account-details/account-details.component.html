@@ -1,1 +1,7 @@
-<p>account-details works!</p>
+<div *ngIf="account">
+<h3>{{account.username}}'s details</h3>
+<h4> {{account.id}}</h4>
+<p>{{account.role}}</p>
+</div>
+<div *ngIf="!account"> How did you get here?</div>
+

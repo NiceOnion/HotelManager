@@ -1,8 +1,9 @@
 export interface account{
     id: number;
-    name: string;
+
     password: string;
     role: string;
+    username: string;
 }
 
 export const Accounts = [

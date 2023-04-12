@@ -1,4 +1,4 @@
-package HotelManager;
+package HotelManager.DAL;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -69,6 +69,6 @@ public class Account {
 
     @Override
     public String toString(){
-        return "HotelManager.Account{" + ", id=" + this.ID + ", name='" + this.Username + "', Role=" + this.Role + '}';
+        return "HotelManager.DAL.Account{" + ", id=" + this.ID + ", name='" + this.Username + "', Role=" + this.Role + '}';
     }
 }

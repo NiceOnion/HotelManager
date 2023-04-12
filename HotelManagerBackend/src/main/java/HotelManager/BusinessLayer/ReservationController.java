@@ -1,5 +1,9 @@
-package HotelManager;
+package HotelManager.BusinessLayer;
 
+import HotelManager.BusinessLayer.ErrorHandling.ReservationNotFoundException;
+import HotelManager.DAL.Reservation;
+import HotelManager.DAL.ReservationRepository;
+import HotelManager.DAL.Status;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.MediaTypes;
@@ -17,7 +21,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Controller
-@CrossOrigin(origins = "${allowedOrigins}")
+@CrossOrigin
 @RequestMapping("Reservations")
 public class ReservationController {
 

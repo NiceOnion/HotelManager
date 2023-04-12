@@ -1,19 +1,20 @@
-package HotelManager;
+package HotelManager.BusinessLayer;
 
-import org.springframework.hateoas.CollectionModel;
+import HotelManager.BusinessLayer.ErrorHandling.AccountNotFoundException;
+import HotelManager.DAL.Account;
+import HotelManager.DAL.AccountRepository;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 
 @RestController
 
-@CrossOrigin(origins = "${allowedOrigins}")
+@CrossOrigin
 @RequestMapping("Accounts")
 public class AccountController {
 
@@ -25,14 +26,9 @@ public class AccountController {
         this.assembler = assembler;
     }
 
-    @GetMapping("All")
-    CollectionModel<EntityModel<Account>> all() {
-
-        List<EntityModel<Account>> accounts = repository.findAll().stream()//
-                .map(assembler::toModel)//
-                .collect(Collectors.toList());
-
-        return CollectionModel.of(accounts, linkTo(methodOn(AccountController.class).all()).withSelfRel());
+    @GetMapping(path = "All", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<Account> all(){
+        return repository.findAll();
     }
 
     @PostMapping("New")

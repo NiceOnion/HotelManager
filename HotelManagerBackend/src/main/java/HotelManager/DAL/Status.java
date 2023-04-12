@@ -1,4 +1,4 @@
-package HotelManager;
+package HotelManager.DAL;
 
 public enum Status {
 

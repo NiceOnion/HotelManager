@@ -1,8 +1,8 @@
-package HotelManager;
+package HotelManager.BusinessLayer.ErrorHandling;
 
 public class AccountNotFoundException extends RuntimeException {
 
-    AccountNotFoundException(Long id) {
+    public AccountNotFoundException(Long id) {
         super("Could not find Account with ID: " + id);
     }
 }

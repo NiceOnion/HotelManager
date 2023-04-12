@@ -1,5 +1,7 @@
-package HotelManager;
+package HotelManager.BusinessLayer;
 
+import HotelManager.DAL.Reservation;
+import HotelManager.DAL.Status;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package HotelManager;
+package HotelManager.DAL;
 
 import java.util.Objects;
 

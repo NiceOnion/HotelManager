@@ -1,4 +1,4 @@
-package HotelManager;
+package HotelManager.BusinessLayer.ErrorHandling;
 
 public class ReservationNotFoundException extends RuntimeException {
 

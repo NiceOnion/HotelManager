@@ -20,22 +20,16 @@ export class AccountService {
     )
   };
 
-  public getAllAccounts(): Observable<any>{
+  public getAllAccounts(): Observable<account[]>{
     const url = this.baseUrlService.getURL() + '/Accounts/All';
     return this.http.get<account[]>(url)
-
-        /*.pipe(
-        map((response: any) => {return response}),
-        catchError((error: any) => {return throwError(error);
-        })
-    )*/
   }
 
-  public getOneAccount(id: number): Observable<account>{
-    const url = '/Accounts/one/${id}';
-    return this.http.get(this.baseUrlService.getURL() + url).pipe(
-        map((response: any) => {return response;}),
-        catchError((error: any) => {return throwError(error)})
-    )
+  public getOneAccount(id: Number): Observable<account>{
+    const url = this.baseUrlService.getURL() + '/Accounts/One/${id}';
+    return this.http.get<account>(url).pipe(
+        catchError((error: any) =>
+        {return throwError(error)}
+    ));
   }
 }
