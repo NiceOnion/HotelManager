@@ -42,7 +42,7 @@ jobs:
     - name: mavenwrapper permission
       run: chmod +x HotelManagerBackend/mvnw
     - name: Build Spring Boot application
-      run: HotelManagerBackend/mvnw clean package
+      run: mvnw clean package
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
       with:
