@@ -5,10 +5,10 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 
-import { AccommodationListComponent } from './App/accomodation-list/accommodation-list.component';
-import { AccountListComponent } from './App/account-list/account-list.component';
+import { AccommodationListComponent } from './app/accomodation-list/accommodation-list.component';
+import { AccountListComponent } from './app/account-list/account-list.component';
 import { AppComponent } from './App.component';
-import { AccountDetailsComponent } from './App/account-details/account-details.component';
+import { AccountDetailsComponent } from './app/account-details/account-details.component';
 
 @NgModule({
     imports: [
