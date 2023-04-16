@@ -7,7 +7,7 @@ import {RouterModule} from "@angular/router";
 
 import { AccommodationListComponent } from './app/accomodation-list/accommodation-list.component';
 import { AccountListComponent } from './app/account-list/account-list.component';
-import { AppComponent } from './App.component';
+import { AppComponent } from './app.component';
 import { AccountDetailsComponent } from './app/account-details/account-details.component';
 
 @NgModule({
