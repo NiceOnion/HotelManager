@@ -44,7 +44,8 @@ jobs:
     - name: print working directory
       run: pwd
     - name: Build Spring Boot application
-      run: HotelManagerBackend/mvnw clean package
+      run: /home/runner/work/HotelManager/HotelManagerBackend/mvnw clean package
+
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
       with:
