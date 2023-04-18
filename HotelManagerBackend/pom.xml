@@ -15,6 +15,11 @@
     <description>HotelManager</description>
     <properties>
         <java.version>19</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven-wrapper.jar>../.mvn/wrapper/maven-wrapper.jar</maven-wrapper.jar>
+        <maven-wrapper.properties>../.mvn/wrapper/maven-wrapper.properties</maven-wrapper.properties>
     </properties>
     <dependencies>
         <dependency>
