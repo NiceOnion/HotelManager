@@ -43,12 +43,8 @@ jobs:
       run: chmod +x HotelManagerBackend/mvnw
     - name: print working directory
       run: pwd
-    - name: Change directory
-      run: cd HotelManager/HotelManagerBackend
-    - name: print working directory
-      run: pwd
     - name: Build Spring Boot application
-      run: /home/runner/work/HotelManager/HotelManagerBackend/mvnw clean package
+      run: mvnw clean package
 
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
