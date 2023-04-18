@@ -39,6 +39,8 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: '19'
+    - name: mavenwrapper permission
+      run: chmod +x HotelManagerBackend/mvnw
     - name: print working directory
       run: pwd
     - name: Build Spring Boot application
