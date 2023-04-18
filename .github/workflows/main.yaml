@@ -39,10 +39,10 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: '19'
-    - name: mavenwrapper permission
-      run: chmod +x HotelManagerBackend/mvnw
+    - name: print working directory
+      run: pwd
     - name: Build Spring Boot application
-      run: HotelManager/HotelManagerBackend/mvnw clean package
+      run: ./mvnw clean package
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
       with:
