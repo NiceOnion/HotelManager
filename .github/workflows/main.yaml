@@ -43,6 +43,8 @@ jobs:
       run: chmod +x HotelManagerBackend/mvnw
     - name: print working directory
       run: pwd
+    - name: Change directory
+      run: cd HotelManager/HotelManagerBackend
     - name: Build Spring Boot application
       run: /home/runner/work/HotelManager/HotelManagerBackend/mvnw clean package
 
