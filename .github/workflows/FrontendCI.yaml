@@ -1,0 +1,35 @@
+name: FrontendCI
+
+on:
+  push:
+    paths:
+      - 'Angular/**'
+  pull_request:
+    paths:
+      - 'Angular/**'
+
+jobs:
+  build-angular:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./HotelManagerFrontend
+    - name: Build and test
+      run: |
+        npm run build
+        npm test
+      working-directory: ./HotelManagerFrontend
