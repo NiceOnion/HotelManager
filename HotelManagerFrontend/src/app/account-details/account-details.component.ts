@@ -16,8 +16,8 @@ export class AccountDetailsComponent {
   constructor(private route: ActivatedRoute, public accountservice : AccountService) {}
 
   ngOnInit():void{
-    const productIdFromRoute = Number(this.route.snapshot.paramMap.get('id'));
+    const productIdFromRoute = this.route.params.subscribe(params => { const id = params['id'];});
     console.log(productIdFromRoute); // add this line to check the value of productIdFromRoute
-    this.accountservice.getOneAccount(productIdFromRoute).subscribe(data => this.account = data)
+    this.accountservice.getOneAccount(Number(this.route.params.subscribe(params => { const id = params['id'];}))).subscribe(data => this.account = data)
   }
 }

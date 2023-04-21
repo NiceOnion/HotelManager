@@ -3,6 +3,7 @@ package HotelManager.BusinessLayer;
 import HotelManager.BusinessLayer.ErrorHandling.AccountNotFoundException;
 import HotelManager.DAL.Account;
 import HotelManager.DAL.AccountRepository;
+import jakarta.persistence.Convert;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -37,10 +38,10 @@ public class AccountController {
     }
 
     @GetMapping("One/{id}")
-    EntityModel<Account> one(@PathVariable Long id) {
-
-        Account account = repository.findById(id) //
-                .orElseThrow(() -> new AccountNotFoundException(id));
+    EntityModel<Account> one(@PathVariable String id) {
+        long RequestedID = Long.parseLong(id);
+        Account account = repository.findById(RequestedID) //
+                .orElseThrow(() -> new AccountNotFoundException(RequestedID));
 
         return assembler.toModel(account);
     }
