@@ -3,10 +3,10 @@ name: FrontendCI
 on:
   push:
     paths:
-      - 'Angular/**'
+      - 'HotelManagerFrontend/**'
   pull_request:
     paths:
-      - 'Angular/**'
+      - 'HotelManagerFrontend/**'
 
 jobs:
   build-angular:
