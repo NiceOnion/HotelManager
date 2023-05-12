@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BaseUrlService } from './base-url.service';
+import { BaseUrlService } from '../app/Services/base-url.service';
 
 describe('BaseURLServiceService', () => {
   let service: BaseUrlService;

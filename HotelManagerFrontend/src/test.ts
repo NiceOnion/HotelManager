@@ -5,10 +5,10 @@ import 'zone.js/dist/zone-testing';
 import 'zone.js/dist/zone';
 
 // Import all of your tests
-import './app/Services/account.service.spec';
-import './app/Services/base-urlservice.service.spec';
-import './app/account-list/account-list.component.spec';
-import './app/account-details/account-details.component.spec';
+import './spec/account.service.spec';
+import './spec/base-urlservice.service.spec';
+import './spec/account-list.component.spec';
+import './spec/account-details.component.spec';
 // ...and so on
 
 // Set up the test bed environment

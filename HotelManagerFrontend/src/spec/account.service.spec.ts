@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
-import { AccountService } from './account.service';
-import {account} from "../DataObjects/Accounts";
+import { AccountService } from '../app/Services/account.service';
+import {account} from "../app/DataObjects/Accounts";
 
 describe('AccountServiceService', () => {
   let service: AccountService;
