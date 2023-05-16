@@ -17,10 +17,11 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "useDefineForClassFields": false,
-    "target": "ES2022",
-    "module": "ES2022",
+    "esModuleInterop": true,
+    "target": "es6",
+    "module": "es6",
     "lib": [
-      "ES2022",
+      "es6",
       "dom"
     ]
   },
