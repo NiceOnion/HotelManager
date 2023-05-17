@@ -24,7 +24,7 @@ import { AccountDetailsComponent } from './app/account-details/account-details.c
         AccommodationListComponent,
         AccountListComponent,
         AppComponent,
-        AccountDetailsComponent
+        AccountDetailsComponent,
   ],
     bootstrap: [
         AppComponent

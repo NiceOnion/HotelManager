@@ -1,4 +1,4 @@
-import {AppComponent} from "../../app.component";
+import {AppComponent} from "../../src/app.component";
 import { browser, logging } from 'protractor';
 
 describe('AppComponent', () => {
