@@ -11,15 +11,27 @@ on:
 jobs:
   build-angular:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+        
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
+    - name: Cache node modules
+      uses: actions/cache@v1
       with:
-        node-version: '16.x'
-    - name: Install dependencies
-      run: npm install
-      working-directory: ./HotelManagerFrontend
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+  
+    - name: Node ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+          
     - name: run tests
-      run: ng test --no-watch --no-progress
+      run: |
+        npm ci
+        npm run build:ci
       working-directory: ./HotelManagerFrontend
