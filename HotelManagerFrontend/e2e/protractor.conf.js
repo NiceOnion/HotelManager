@@ -5,7 +5,7 @@ exports.config = {
         browserName: 'chrome'
     },
     framework: 'jasmine',
-    specs: ['e2e/specs'],
+    specs: ['e2e/specs '],
     jasmineNodeOpts: {
         showColors: true,
         defaultTimeoutInterval: 30000

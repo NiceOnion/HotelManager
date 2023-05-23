@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {map, Observable, throwError} from "rxjs";
+import { Observable, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
 import {BaseUrlService} from "./base-url.service";
 import { account } from "../DataObjects/Accounts";
@@ -10,7 +10,7 @@ import { account } from "../DataObjects/Accounts";
 })
 export class AccountService {
 
-  constructor(private http: HttpClient, private baseUrlService: BaseUrlService) { }
+  constructor(private http: HttpClient, public baseUrlService: BaseUrlService) { }
 
   httpOptions = {
     headers: new HttpHeaders(

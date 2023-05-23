@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
 import { AccountService } from './account.service';
-import {account} from "../DataObjects/Accounts";
 
 describe('AccountServiceService', () => {
   let service: AccountService;
@@ -31,7 +30,7 @@ describe('AccountServiceService', () => {
       expect(accounts).toEqual(mockAccounts);
     });
 
-    const request = httpMock.expectOne('${service.aseUrlService.getURL()}/Accounts/All');
+    const request = httpMock.expectOne(service.baseUrlService.getURL() + '/Accounts/All');
     expect(request.request.method).toBe('GET');
     request.flush(mockAccounts);
   });

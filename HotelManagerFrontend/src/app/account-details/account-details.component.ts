@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {AccountService} from "../Services/account.service";
-import {account, Accounts} from "../DataObjects/Accounts";
+import {account} from "../DataObjects/Accounts";
 import {ActivatedRoute} from "@angular/router";
 
 
@@ -16,8 +16,8 @@ export class AccountDetailsComponent {
   constructor(private route: ActivatedRoute, public accountservice : AccountService) {}
 
   ngOnInit():void{
-    const productIdFromRoute = this.route.params.subscribe(params => { const id = params['id'];});
-    console.log(productIdFromRoute); // add this line to check the value of productIdFromRoute
-    this.accountservice.getOneAccount(Number(this.route.params.subscribe(params => { const id = params['id'];}))).subscribe(data => this.account = data)
+    const productIdFromRoute = this.route.params.subscribe(params => {params['id'];});
+    console.log(productIdFromRoute);
+    this.accountservice.getOneAccount(Number(this.route.params.subscribe(params => {params['id'];}))).subscribe(data => this.account = data)
   }
 }
