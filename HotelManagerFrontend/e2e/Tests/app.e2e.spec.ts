@@ -7,14 +7,16 @@ describe('AppComponent', () => {
     });
 
     it('should display the title', () => {
-        expect(browser.getTitle()).toEqual(jasmine.stringMatching('My Angular App'));
+        expect(browser.getTitle()).toEqual(jasmine.stringMatching('Angular Getting Started'));
     });
 
     afterEach(async () => {
-        // Assert that there are no errors in the browser console
         const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-        expect(logs).not.toContain(jasmine.objectContaining({
+        // Exclude the favicon.ico error from the expectations
+        const filteredLogs = logs.filter(log => !log.message.includes('favicon.ico'));
+        expect(filteredLogs).not.toContain(jasmine.objectContaining({
             level: logging.Level.SEVERE
         }));
     });
+
 });

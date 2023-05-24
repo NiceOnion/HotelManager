@@ -1,7 +1,7 @@
 module.exports = function (config) {
     config.set({
         // Base path that will be used to resolve all patterns (e.g., files, exclude)
-        basePath: '',
+        basePath: 'src',
 
         // Frameworks to use
         frameworks: ['jasmine', '@angular-devkit/build-angular'],

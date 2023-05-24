@@ -5,12 +5,14 @@ exports.config = {
         browserName: 'chrome'
     },
     framework: 'jasmine',
-    specs: ['e2e/specs '],
+    specs: ['Tests/*.e2e.spec.ts'],
     jasmineNodeOpts: {
         showColors: true,
         defaultTimeoutInterval: 30000
     },
-    onPrepare: function () {
-        browser.manage().window().maximize();
+    onPrepare: () => {
+        require('ts-node').register({
+            project: './tsconfig.json'
+        })
     }
 };
