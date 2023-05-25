@@ -9,26 +9,22 @@ on:
       - 'HotelManagerBackend/**'
 
 jobs:
-  build-spring-boot:
-      runs-on: ubuntu-latest
-      steps:
-      - name: Chekcout code
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Chekcout repo
         uses: actions/checkout@v2
+        
       - name: Set up Java
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: '19'
-      - name: Cache Maven dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-      - name: Ensure mavenwrapper
-        run: chmod +x mvnw
-        working-directory: HotelManagerBackend
-      - name: Build and test
-        run: mvnw clean package
-        working-directory: HotelManagerBackend
+          
+      - name: Build with Maven
+        run: mvn clean install -B
+        
+      - name: Run tests
+        run: mv test
