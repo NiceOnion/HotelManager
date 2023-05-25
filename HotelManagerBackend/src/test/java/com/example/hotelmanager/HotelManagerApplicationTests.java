@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class HotelManagerApplicationTests {
 
 	@Test
-	public void CITest3(){
+	public void CITest4(){
 		String string = "Hello World!";
 		assertEquals("Hello World!", string);
 	}
