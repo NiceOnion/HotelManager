@@ -28,4 +28,4 @@ jobs:
         working-directory: HotelManagerBackend
         
       - name: Run tests
-        run: mv test
+        run: mvn test
