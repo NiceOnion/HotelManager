@@ -23,9 +23,6 @@ jobs:
           distribution: 'adopt'
           java-version: '19'
           
-      - name: Build with Maven
+      - name: Build and Test with Maven
         run: mvn clean install -B
         working-directory: HotelManagerBackend
-        
-      - name: Run tests
-        run: mvn test
