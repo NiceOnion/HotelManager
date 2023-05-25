@@ -30,6 +30,14 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
           
+    - name: Run API
+      working-directory: HotelManagerBackend
+      run: |
+        yarn install
+        yarn mock &
+      env:
+        PORT: 8080
+    
     - name: run tests
       run: |
         npm ci
