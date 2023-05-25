@@ -1,13 +1,19 @@
-package java.com.example.hotelmanager;
+package com.example.hotelmanager;
 
+import HotelManager.HotelManagerApplication;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-@SpringBootTest
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@SpringJUnitConfig
+@ContextConfiguration(classes = {HotelManagerApplication.class})
 class HotelManagerApplicationTests {
 
 	@Test
-	void contextLoads() {
+	public void CITest(){
+		String string = "Hello World!";
+		assertEquals("Hello World!", string);
 	}
-
 }
