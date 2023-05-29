@@ -1,4 +1,4 @@
-FROM adoptopenjdk:11-jre-hotspot
+FROM adoptopenjdk/openjdk16:ubi
 
 VOLUME /tmp
 
