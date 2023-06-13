@@ -4,13 +4,14 @@ import { Observable, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
 import {BaseUrlService} from "./base-url.service";
 import { account } from "../DataObjects/Accounts";
+import {ActivatedRoute} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  constructor(private http: HttpClient, public baseUrlService: BaseUrlService) { }
+  constructor(private http: HttpClient, public baseUrlService: BaseUrlService, public route: ActivatedRoute) { }
 
   httpOptions = {
     headers: new HttpHeaders(
@@ -26,7 +27,7 @@ export class AccountService {
   }
 
   public getOneAccount(id: Number): Observable<account>{
-    const url = this.baseUrlService.getURL() + '/Accounts/One/${id}';
+    const url = this.baseUrlService.getURL() + '/Accounts/One/' + this.route.snapshot.paramMap.get('id');
     return this.http.get<account>(url).pipe(
         catchError((error: any) =>
         {return throwError(error)}

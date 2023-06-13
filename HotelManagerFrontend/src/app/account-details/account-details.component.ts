@@ -16,8 +16,9 @@ export class AccountDetailsComponent {
   constructor(private route: ActivatedRoute, public accountservice : AccountService) {}
 
   ngOnInit():void{
-    const productIdFromRoute = this.route.params.subscribe(params => {params['id'];});
-    console.log(productIdFromRoute);
-    this.accountservice.getOneAccount(Number(this.route.params.subscribe(params => {params['id'];}))).subscribe(data => this.account = data)
+    this.route.params.subscribe(params => {
+      const accountId = Number(params['id']);
+      this.accountservice.getOneAccount(accountId).subscribe(data => this.account = data);
+    })
   }
 }

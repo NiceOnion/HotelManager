@@ -17,15 +17,17 @@ import { AccountDetailsComponent } from './app/account-details/account-details.c
         ReactiveFormsModule,
         RouterModule.forRoot([
             { path: '', component: AccountListComponent},
-            { path: 'Account/:accountID', component: AccountDetailsComponent}
+            { path: 'Account/:id', component: AccountDetailsComponent}
         ])
     ],
+    exports:
+        [RouterModule],
     declarations: [
         AccommodationListComponent,
         AccountListComponent,
         AppComponent,
         AccountDetailsComponent,
-  ],
+    ],
     bootstrap: [
         AppComponent
     ]

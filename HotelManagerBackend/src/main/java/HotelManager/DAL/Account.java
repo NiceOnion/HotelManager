@@ -1,15 +1,14 @@
 package HotelManager.DAL;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
+@Table(name="Account")
 public class Account {
 
-    private @Id @GeneratedValue Long ID;
+    private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long ID;
     private String Username;
     private String Password;
     private String Role;
