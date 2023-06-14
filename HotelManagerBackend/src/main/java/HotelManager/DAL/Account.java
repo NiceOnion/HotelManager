@@ -2,6 +2,7 @@ package HotelManager.DAL;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import java.util.Objects;
@@ -9,42 +10,43 @@ import java.util.Objects;
 @Entity
 public class Account {
 
-    private @Id @GeneratedValue Long ID;
-    private String Username;
-    private String Password;
-    private String Role;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private String username;
+    private String password;
+    private String role;
 
     public Account(){}
 
-    public Account(String Username, String Password, String Role){
-        this.Username = Username;
-        this.Password = Password;
-        this.Role = Role;
+    public Account(Account account){
+        this.username = account.username;
+        this.password = account.password;
+        this.role = account.role;
     }
 
-    public Long getID() {
-        return ID;
+    public Integer getId() {
+        return id;
     }
     public String getUsername() {
-        return Username;
+        return username;
     }
     public String getPassword() {
-        return Password;
+        return password;
     }
     public String getRole() {
-        return Role;
+        return role;
     }
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setId(Integer ID) {
+        this.id = ID;
     }
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
     public void setRole(String role) {
-        Role = role;
+        this.role = role;
     }
 
 
@@ -58,17 +60,17 @@ public class Account {
         }
         Account account = (Account)o;
 
-        return Objects.equals(this.ID, account.ID) && Objects.equals(this.Username, account.Username)
-                && Objects.equals(this.Password, account.Password) && Objects.equals(this.Role, account.Role);
+        return Objects.equals(this.id, account.id) && Objects.equals(this.username, account.username)
+                && Objects.equals(this.password, account.password) && Objects.equals(this.role, account.role);
     }
 
     @Override
     public int hashCode(){
-        return Objects.hash(this.ID, this.Username, this.Password, this.Role);
+        return Objects.hash(this.id, this.username, this.password, this.role);
     }
 
     @Override
     public String toString(){
-        return "HotelManager.DAL.Account{" + ", id=" + this.ID + ", name='" + this.Username + "', Role=" + this.Role + '}';
+        return "HotelManager.DAL.Account{" + ", id=" + this.id + ", name='" + this.username + "', Role=" + this.role + '}';
     }
 }

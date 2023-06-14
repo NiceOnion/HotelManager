@@ -1,9 +1,15 @@
-<h2>account-list works!</h2>
+<h2>A list of accounts</h2>
 
 <div *ngFor="let account of accounts">
     <h3>
-        <a [title]="account.username + ' details'" [routerLink]="['/Account', account.id]">
+        <a [title]="account.username + ' details'" [routerLink]="['/Account', account.ID]">
             {{account.username}}
         </a>
     </h3>
 </div>
+
+<p>
+    <a routerLink="/Account/Put">
+        Add Account
+    </a>
+</p>

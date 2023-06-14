@@ -9,9 +9,6 @@ on:
 jobs:
   build-angular:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
         
     steps:
     - uses: actions/checkout@v2
@@ -22,19 +19,6 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
-  
-    - name: Node ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-          
-    - name: Run API
-      working-directory: HotelManagerBackend
-      run: |
-        yarn install
-        yarn mock &
-      env:
-        PORT: 8080
     
     - name: run tests
       run: |
