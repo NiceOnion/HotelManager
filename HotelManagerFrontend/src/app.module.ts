@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AccountDetailsComponent } from './app/account-details/account-details.component';
 import { HotelComponent } from './app/hotel/hotel.component';
 import { AccountNewComponent } from './app/account-new/account-new.component';
+import { AccountUpdateComponent } from './app/account-update/account-update.component';
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import { AccountNewComponent } from './app/account-new/account-new.component';
             {path: '', component: AccountListComponent},
             {path: 'Account/Put', component: AccountNewComponent},
             {path: 'Account/:accountID', component: AccountDetailsComponent},
+            {path: 'Account/:accountID/Update', component: AccountUpdateComponent}
         ]),
         FormsModule
     ],
@@ -31,6 +33,7 @@ import { AccountNewComponent } from './app/account-new/account-new.component';
         AccountDetailsComponent,
         HotelComponent,
         AccountNewComponent,
+        AccountUpdateComponent,
   ],
     bootstrap: [
         AppComponent

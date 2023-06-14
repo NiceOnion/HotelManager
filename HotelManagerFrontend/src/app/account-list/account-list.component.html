@@ -2,7 +2,7 @@
 
 <div *ngFor="let account of accounts">
     <h3>
-        <a [title]="account.username + ' details'" [routerLink]="['/Account', account.ID]">
+        <a [title]="account.username + ' details'" [routerLink]="['/Account', account.id]">
             {{account.username}}
         </a>
     </h3>

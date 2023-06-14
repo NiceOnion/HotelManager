@@ -1,5 +1,5 @@
 export interface account {
-    ID: number;
+    id: number;
     password: string;
     role: string;
     username: string;

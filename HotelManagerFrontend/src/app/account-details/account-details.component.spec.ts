@@ -17,7 +17,7 @@ describe('AccountDetailsComponent', () => {
           provide: ActivatedRoute,
           useValue: {
             snapshot: {
-              paramMap: convertToParamMap({ id: 1 }) // Provide a mock paramMap using `convertToParamMap`
+              paramMap: convertToParamMap({ id: 1 })
             }
           },
         },

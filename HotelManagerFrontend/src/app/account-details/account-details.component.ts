@@ -19,7 +19,6 @@ export class AccountDetailsComponent {
 
     const routeParams = this.route.snapshot.paramMap;
     const accountIdFromRoute = routeParams.get('accountID')
-    console.log(accountIdFromRoute);
     if (typeof accountIdFromRoute === "string") {
       this.accountService.getOneAccount(parseInt(accountIdFromRoute, 10)).subscribe(data => {
 
@@ -29,6 +28,13 @@ export class AccountDetailsComponent {
   }
 
   deleteAccount(account: account): void {
-    //this.accountService.deleteAccount(account.ID).subscribe(data => {this.response = data})
+    this.accountService.deleteAccount(account.id).subscribe(() => {
+      // Handle success or any additional logic after the account is deleted
+      console.log('Account deleted successfully');
+    }, (error) => {
+      // Handle error if the account deletion fails
+      console.error('Error deleting account:', error);
+    });
   }
+
 }

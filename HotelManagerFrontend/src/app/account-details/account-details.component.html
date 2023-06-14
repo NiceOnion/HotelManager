@@ -1,8 +1,11 @@
 <div *ngIf="account">
-<h3>{{account!.username}}'s details</h3>
-<h4> {{account!.ID}}</h4>
-<p>{{account!.role}}</p>
-    <button type="button" (click)="deleteAccount(account)" >Delete</button>
+    <h3>{{account!.username}}'s details</h3>
+    <h4> {{account!.id}}</h4>
+    <p>{{account!.role}}</p>
+    <div>
+        <a [routerLink]="'../' + account.id +  '/Update'">Update Account</a>
+    </div>
+    <button type="button" (click)="deleteAccount(account)">Delete</button>
 </div>
 <div *ngIf="!account"> How did you get here?</div>
 

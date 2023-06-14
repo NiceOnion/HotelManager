@@ -9,7 +9,7 @@ import {AccountService} from "../Services/account.service";
 })
 export class AccountNewComponent {
   account : account = {
-    ID: 0,
+    id: 0,
     username: '',
     password: '',
     role: ''

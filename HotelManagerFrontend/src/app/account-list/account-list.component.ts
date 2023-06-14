@@ -17,8 +17,9 @@ export class AccountListComponent implements OnInit{
 
   ngOnInit(): void {
     this.accountService.getAllAccounts().subscribe(data =>{
-      console.log(data)
+      console.log(data);
       this.accounts = data;
+      console.log(this.accounts[1].id);
     });
   }
 }
