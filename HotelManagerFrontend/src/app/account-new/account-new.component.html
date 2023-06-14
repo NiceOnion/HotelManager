@@ -1,0 +1,23 @@
+<p>new Account</p>
+<form (ngSubmit)="onSubmit()">
+    <div>
+        <label>
+            Name
+        </label>
+        <input type="text" [(ngModel)]="account.username" name="username">
+    </div>
+    <div>
+        <label>
+            password
+        </label>
+        <input type="text" [(ngModel)]="account.password" name="password">
+    </div>
+    <div>
+        <label>
+            Role
+        </label>
+        <input type="text" [(ngModel)]="account.role" name="role">
+    </div>
+
+    <button class="button" type="submit">Create</button>
+</form>
