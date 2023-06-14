@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AccountDetailsComponent } from './account-details.component';
-import { of } from 'rxjs';
 
 describe('AccountDetailsComponent', () => {
   let component: AccountDetailsComponent;
@@ -12,12 +11,14 @@ describe('AccountDetailsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AccountDetailsComponent],
-      imports: [HttpClientTestingModule], // Import the HttpClientTestingModule
+      imports: [HttpClientTestingModule],
       providers: [
         {
           provide: ActivatedRoute,
           useValue: {
-            params: of({ id: 1 }),
+            snapshot: {
+              paramMap: convertToParamMap({ id: 1 }) // Provide a mock paramMap using `convertToParamMap`
+            }
           },
         },
       ],

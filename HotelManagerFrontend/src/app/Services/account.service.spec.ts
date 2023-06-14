@@ -31,7 +31,7 @@ describe('AccountService', () => {
       expect(accounts).toEqual(mockAccounts);
     });
 
-    const request = httpMock.expectOne(service.baseUrlService.getURL() + '/Accounts/All');
+    const request = httpMock.expectOne(service.baseUrlService.getURL() + 'Accounts/All'); // Corrected URL construction
     expect(request.request.method).toBe('GET');
     request.flush(mockAccounts);
   });

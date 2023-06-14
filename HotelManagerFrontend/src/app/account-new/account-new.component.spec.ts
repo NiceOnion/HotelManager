@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AccountNewComponent } from './account-new.component';
 
@@ -8,9 +10,9 @@ describe('AccountNewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AccountNewComponent ]
-    })
-    .compileComponents();
+      declarations: [AccountNewComponent],
+      imports: [FormsModule, HttpClientTestingModule], // Add FormsModule here
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AccountNewComponent);
     component = fixture.componentInstance;
