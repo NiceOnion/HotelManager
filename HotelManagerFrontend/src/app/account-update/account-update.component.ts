@@ -26,7 +26,9 @@ export class AccountUpdateComponent {
 
   onSubmit(): void{
 
-    this.accountService.putAccount(this.account);
+    this.accountService.putAccount(this.account).subscribe((response) => {
+      console.log(response)
+    });
   }
 
 }

@@ -4,14 +4,19 @@ import {Observable, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
 import {BaseUrlService} from "./base-url.service";
 import {account} from "../DataObjects/account";
+import {jsonHelpUsage} from "@angular/cli/src/command-builder/utilities/json-help";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AccountService {
 
+    header: HttpHeaders = new HttpHeaders({
+        'Content-Type': 'application/json',
+    })
     constructor(private http: HttpClient, public baseUrlService: BaseUrlService) {
     }
+
 
     public getAllAccounts(): Observable<account[]> {
         const url = this.baseUrlService.getURL() + 'Account/All';
@@ -31,17 +36,9 @@ export class AccountService {
     public postAccount(account: account): Observable<any> {
         console.log("You have called the post method")
         const url = this.baseUrlService.getURL() + 'Account';
-        const headers = new HttpHeaders()
-            .set('Content-Type', 'application/json')
-            .set('Content-Length', JSON.stringify(account).length.toString())
-            .set('Host', 'http://localhost:8080'); // Replace 'example.com' with the actual host
-
+        console.log(account)
         console.log("The request is about to be sent! " + url + "  ---  " + account.username)
-        return this.http.post(url, account, { headers }).pipe(
-            catchError((error: any) => {
-                return throwError(error);
-            })
-        );
+        return this.http.post(url, JSON.stringify(account), { 'headers': this.header })
     }
 
     deleteAccount(id: number) {
@@ -53,14 +50,10 @@ export class AccountService {
         if (!account) {
             throw new Error('Invalid account');
         }
+
         const url = this.baseUrlService.getURL() + 'Account/' + account.id;
-        const headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Content-Length': JSON.stringify(account).length.toString(),
-            'Host': 'http://localhost:8080'
-        });
-        console.log("Sending: " + account.username + " --- " + account.id + "To: " + url);
-        return this.http.post(url, account, { headers }).pipe(
+        console.log("Sending: " + account.username + " --- " + account.id + " To: " + url);
+        return this.http.put(url, account, { headers: this.header }).pipe(
             catchError((error: any) => {
                 console.log(error);
                 return throwError(error);

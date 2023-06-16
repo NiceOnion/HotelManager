@@ -1,0 +1,14 @@
+<p>List of Hotels</p>
+<div *ngFor="let hotel of hotels">
+    <h3>
+        <a [title]="hotel.name + ' details'" [routerLink]="['/Hotel/' + hotel.id]" ]>
+            {{hotel.name}}
+        </a>
+    </h3>
+</div>
+
+<p>
+    <a routerLink="/Hotel/Post">
+        Add Hotel
+    </a>
+</p>

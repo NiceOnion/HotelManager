@@ -21,9 +21,9 @@ describe('AccountService', () => {
 
   it('should return a list of accounts', () => {
     const mockAccounts = [
-      { ID: 1, password: '1', role: '', username: 'Account 1' },
-      { ID: 2, password: '2', role: '', username: 'Account 2' },
-      { ID: 3, password: '3', role: '', username: 'Account 3' },
+      { id: 1, password: '1', role: '', username: 'Account 1' },
+      { id: 2, password: '2', role: '', username: 'Account 2' },
+      { id: 3, password: '3', role: '', username: 'Account 3' },
     ];
 
     service.getAllAccounts().subscribe((accounts) => {
@@ -31,7 +31,7 @@ describe('AccountService', () => {
       expect(accounts).toEqual(mockAccounts);
     });
 
-    const request = httpMock.expectOne(service.baseUrlService.getURL() + 'Accounts/All'); // Corrected URL construction
+    const request = httpMock.expectOne(service.baseUrlService.getURL() + 'Account/All'); // Corrected URL construction
     expect(request.request.method).toBe('GET');
     request.flush(mockAccounts);
   });

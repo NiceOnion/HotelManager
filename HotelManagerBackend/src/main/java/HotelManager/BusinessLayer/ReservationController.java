@@ -4,83 +4,54 @@ import HotelManager.BusinessLayer.ErrorHandling.ReservationNotFoundException;
 import HotelManager.DAL.Reservation;
 import HotelManager.DAL.ReservationRepository;
 import HotelManager.DAL.Status;
-import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.MediaTypes;
-import org.springframework.hateoas.mediatype.problem.Problem;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-
 @Controller
 @CrossOrigin
 @RequestMapping("Reservations")
 public class ReservationController {
 
     private final ReservationRepository repository;
-    private final ReservationModelAssembler assembler;
 
-    ReservationController(ReservationRepository repository, ReservationModelAssembler assembler) {
+    ReservationController(ReservationRepository repository) {
         this.repository = repository;
-        this.assembler = assembler;
     }
 
     @GetMapping("All")
-    CollectionModel<EntityModel<Reservation>> All() {
-        List<EntityModel<Reservation>> reservations = repository.findAll().stream()
-                .map(assembler::toModel).collect(Collectors.toList());
-        return CollectionModel.of(reservations, linkTo(methodOn(ReservationController.class).All()).withSelfRel());
+    public List<Reservation> all(){
+        return repository.findAll();
     }
 
     @GetMapping("One/{id}")
-    EntityModel<Reservation> One(@PathVariable Long id) {
-        Reservation reservation = repository.findById(id).orElseThrow(() -> new ReservationNotFoundException(id));
-
-        return assembler.toModel(reservation);
+    Reservation One(@PathVariable Long id) {
+        return repository.findById(id).orElseThrow(() -> new ReservationNotFoundException(id));
     }
 
-    @GetMapping("New")
-    ResponseEntity<EntityModel<Reservation>> New(@RequestBody Reservation reservation) {
-        reservation.setStatus(Status.IN_PROGRESS);
-        Reservation newReservation = repository.save(reservation);
-
-        return ResponseEntity.created(linkTo(methodOn(ReservationController.class).One(newReservation.getID())).toUri()).body(assembler.toModel(newReservation));
+    @PostMapping("New")
+    Reservation New(@RequestBody Reservation reservation) {
+        return repository.save(reservation);
     }
 
-    @DeleteMapping("Cancel")
-    ResponseEntity<?> cancel(@PathVariable Long id) {
-        Reservation reservation = repository.findById(id).orElseThrow(() -> new ReservationNotFoundException(id));
-
-        if (reservation.getStatus() == Status.IN_PROGRESS) {
-            reservation.setStatus(Status.CANCELLED);
-            return ResponseEntity.ok(assembler.toModel(repository.save(reservation)));
-        }
-        return lockedStatus(reservation);
+    @DeleteMapping("{id}")
+    public void cancel(@PathVariable Long id) {
+        repository.deleteById(id);
     }
 
-    @PutMapping("/One/{id}/complete")
-    ResponseEntity<?> complete(@PathVariable Long id) {
+    @PutMapping("{id}/Complete")
+    Reservation complete(@PathVariable Long id) {
 
         Reservation reservation = repository.findById(id).orElseThrow(() -> new ReservationNotFoundException(id));
 
         if (reservation.getStatus() == Status.IN_PROGRESS) {
             reservation.setStatus(Status.BOOKED);
-            return ResponseEntity.ok(assembler.toModel(repository.save(reservation)));
+            return (repository.save(reservation));
         }
-    return lockedStatus(reservation);
+        return null;
     }
 
-    ResponseEntity<?> lockedStatus(Reservation reservation) {
-        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED) //
-                .header(HttpHeaders.CONTENT_TYPE, MediaTypes.HTTP_PROBLEM_DETAILS_JSON_VALUE)
-                .body(Problem.create().withTitle("Method not allowed").withDetail("You can't cancel reservations  with a " + reservation.getStatus() + " status"));
+    @PutMapping
+    public Reservation putReservation(@RequestBody Reservation reservation){
+        return repository.save(reservation);
     }
 }
