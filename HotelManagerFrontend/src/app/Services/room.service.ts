@@ -25,7 +25,7 @@ export class RoomService {
 
     public PostRoom(room: Room) {
         const url = this.url.getURL() + 'Room';
-        return this.http.post(url, room, {'headers': this.header});
+        return this.http.put(url, room, {'headers': this.header});
     }
 
     public PutRoom(room: Room | undefined) {

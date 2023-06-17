@@ -35,7 +35,7 @@ export class HotelService {
 
     public PostHotel(nHotel: Hotel) {
         const url = this.url.getURL() + 'Hotel'
-        return this.http.post(url, nHotel, {'headers': this.header})
+        return this.http.put(url, nHotel, {'headers': this.header})
     }
 
     public PutHotel(nHotel : Hotel | undefined){

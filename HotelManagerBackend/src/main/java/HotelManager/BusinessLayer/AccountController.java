@@ -26,9 +26,9 @@ public class AccountController {
     public List<Account> all(){
         return repository.findAll();
     }
-    @PostMapping
+    @PostMapping({"id"})
     public Account newAccount(@RequestBody Account newAccount) {
-        System.out.println("An Account has reached the server! " + newAccount);
+        System.out.println("An Account has reached the server! ");
         return repository.save(newAccount);
     }
     @GetMapping("One/{id}")

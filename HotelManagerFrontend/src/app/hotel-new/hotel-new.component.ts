@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Hotel} from "../DataObjects/Hotel";
 import {HotelService} from "../Services/hotel.service";
+import {Room} from "../DataObjects/Room";
 
 @Component({
   selector: 'app-room-new',
@@ -14,7 +15,7 @@ export class HotelNewComponent {
   hotel : Hotel = {
     id: 0,
     name: "",
-    rooms: 0,
+    rooms: new Array<Room>(),
     availableRooms: 0,
     reservedRooms: 0
   }

@@ -18,6 +18,9 @@ import { DashboardComponent } from './app/dashboard/dashboard.component';
 import { RoomDetailsComponent } from './app/room-details/room-details.component';
 import { RoomNewComponent } from './app/room-new/room-new.component';
 import { RoomUpdateComponent } from './app/room-update/room-update.component';
+import { JanitorListComponent } from './app/janitor-list/janitor-list.component';
+import { JanitorDetailsComponent } from './app/janitor-details/janitor-details.component';
+import { JanitorNewComponent } from './app/janitor-new/janitor-new.component';
 
 @NgModule({
     imports: [
@@ -34,9 +37,11 @@ import { RoomUpdateComponent } from './app/room-update/room-update.component';
             {path: 'Hotel/Post', component: HotelNewComponent},
             {path: 'Hotel/:hotelID', component: HotelDetailsComponent},
             {path: 'Hotel/:hotelID/Update', component: HotelUpdateComponent},
+            {path: 'Hotel/:hotelID/Room/Add', component: RoomNewComponent},
             {path: 'Hotel/:hotelID/Room/:roomID', component: RoomDetailsComponent},
             {path: 'Hotel/:hotelID/Room/:roomID/Update', component: RoomUpdateComponent},
             {path: 'Hotel/:hotelID/Room/Post', component: HotelUpdateComponent},
+
         ]),
         FormsModule
     ],
@@ -54,6 +59,9 @@ import { RoomUpdateComponent } from './app/room-update/room-update.component';
         RoomDetailsComponent,
         RoomNewComponent,
         RoomUpdateComponent,
+        JanitorListComponent,
+        JanitorDetailsComponent,
+        JanitorNewComponent,
   ],
     bootstrap: [
         AppComponent

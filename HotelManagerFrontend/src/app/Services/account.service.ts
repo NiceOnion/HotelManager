@@ -34,10 +34,10 @@ export class AccountService {
 
     public postAccount(account: account): Observable<any> {
         console.log("You have called the post method")
-        const url = this.baseUrlService.getURL() + 'Account';
+        const url = this.baseUrlService.getURL() + 'Account/id';
         console.log(account)
-        console.log("The request is about to be sent! " + url + "  ---  " + account.username)
-        return this.http.post(url, account, { 'headers': this.header })
+        console.log("The request is about to be sent! " + )
+        return this.http.post(url, body);
     }
 
     deleteAccount(id: number) {

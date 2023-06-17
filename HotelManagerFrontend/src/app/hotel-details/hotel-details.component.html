@@ -1,15 +1,18 @@
 <div *ngIf="hotel">
     <div>
-<h3>{{hotel.name}}</h3>
-        <a *ngFor="let room of hotel.rooms" [title]="'detials of room ' + room.roomNumber" [routerLink]="'Hotel/' + hotel.id + '/Room/' + room.id" >
-            {{room.roomNumber}}
-        </a>
+        <h3>{{hotel.name}}</h3>
+        <div>
+            <a *ngFor="let room of hotel.rooms" [title]="'detials of room ' + room.roomNumber"
+               [routerLink]="'Room/' + room.id">
+                {{room.roomNumber}}
+            </a>
+        </div>
     </div>
     <div>
-        <a [title]="'add room'" [routerLink]="'Hotel/' + hotel.id + '/update'">Update Hotel</a>
+        <a [title]="'update the hotel name'" [routerLink]="'./Update'">Update Hotel</a>
     </div>
     <div>
-        <a [title]="'add a room'" [routerLink]="'Hotel/Room/Add'">New Room</a>
+        <a [title]="'Add a room'" [routerLink]="'./Room/Add'">New Room</a>
     </div>
 
 </div>
