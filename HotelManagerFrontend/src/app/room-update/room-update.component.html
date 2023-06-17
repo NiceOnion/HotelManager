@@ -1,0 +1,20 @@
+<div *ngIf="room">
+    <p>Update</p>
+    <form (ngSubmit)="onSubmit()">
+        <div>
+            <label>
+                Name
+            </label>
+            <input class="room-number" type="text" [(ngModel)]="room.roomNumber" name="roomNumber">
+            <label>
+                Description
+            </label>
+            <input class="description" type="text" [(ngModel)]="room.description" name="description" >
+        </div>
+
+        <button class="button" type="submit">Update</button>
+    </form>
+</div>
+<div *ngIf="!room">
+    <p>something went wrong!</p>
+</div>

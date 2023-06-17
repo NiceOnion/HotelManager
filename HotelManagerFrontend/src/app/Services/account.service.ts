@@ -4,7 +4,6 @@ import {Observable, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
 import {BaseUrlService} from "./base-url.service";
 import {account} from "../DataObjects/account";
-import {jsonHelpUsage} from "@angular/cli/src/command-builder/utilities/json-help";
 
 @Injectable({
     providedIn: 'root'
@@ -38,7 +37,7 @@ export class AccountService {
         const url = this.baseUrlService.getURL() + 'Account';
         console.log(account)
         console.log("The request is about to be sent! " + url + "  ---  " + account.username)
-        return this.http.post(url, JSON.stringify(account), { 'headers': this.header })
+        return this.http.post(url, account, { 'headers': this.header })
     }
 
     deleteAccount(id: number) {

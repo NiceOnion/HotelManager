@@ -1,0 +1,10 @@
+<div *ngIf="room">
+    <h3>{{room!.roomNumber}}'s details</h3>
+    <h4> {{room!.description}}</h4>
+    <div>
+        <a [routerLink]="'../' + room.id +  '/Update'">Update Account</a>
+    </div>
+    <button type="button" (click)="DeleteRoom(room)">Delete</button>
+</div>
+<div *ngIf="!room"> How did you get here?</div>
+

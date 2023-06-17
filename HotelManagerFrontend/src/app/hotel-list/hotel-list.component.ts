@@ -3,7 +3,7 @@ import {Hotel} from "../DataObjects/Hotel";
 import {HotelService} from "../Services/hotel.service"
 
 @Component({
-    selector: 'app-hotel-list',
+    selector: 'app-room-list',
     templateUrl: './hotel-list.component.html',
     styleUrls: ['./hotel-list.component.css']
 })

@@ -16,12 +16,10 @@ export class AccountDetailsComponent {
   }
 
   ngOnInit(): void {
-
     const routeParams = this.route.snapshot.paramMap;
     const accountIdFromRoute = routeParams.get('accountID')
     if (typeof accountIdFromRoute === "string") {
       this.accountService.getOneAccount(parseInt(accountIdFromRoute, 10)).subscribe(data => {
-
         this.account = data;
       });
     }

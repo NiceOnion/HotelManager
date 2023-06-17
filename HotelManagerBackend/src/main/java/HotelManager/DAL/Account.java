@@ -63,12 +63,10 @@ public class Account {
         return Objects.equals(this.id, account.id) && Objects.equals(this.username, account.username)
                 && Objects.equals(this.password, account.password) && Objects.equals(this.role, account.role);
     }
-
     @Override
     public int hashCode(){
         return Objects.hash(this.id, this.username, this.password, this.role);
     }
-
     @Override
     public String toString(){
         return "HotelManager.DAL.Account{" + ", id=" + this.id + ", name='" + this.username + "', Role=" + this.role + '}';

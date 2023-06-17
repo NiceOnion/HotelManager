@@ -30,7 +30,7 @@ public class HotelController {
 
     @GetMapping(path = "One/{id}")
     Hotel one(@PathVariable Long id){
-        List<Room> Rooms = roomRepository.findByHotelId(id);
+        List<Room> Rooms = roomRepository.findByHotelID(id);
         return hotelRepository.findById(id).orElseThrow(() -> new HotelNotFoundException(id));
     }
 

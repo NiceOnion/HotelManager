@@ -1,7 +1,9 @@
+import {Room} from "./Room";
+
 export interface Hotel{
     id: Number
     name: String
-    rooms: Number
+    rooms: Room[]
     availableRooms: Number
-    reservedRooms: number
+    reservedRooms: Number
 }

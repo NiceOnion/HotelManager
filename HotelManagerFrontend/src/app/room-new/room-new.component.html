@@ -1,0 +1,17 @@
+<p>new room</p>
+<form (ngSubmit)="onSubmit()">
+    <div>
+        <label>
+            Room number
+        </label>
+        <input class="room-number" type="text" [(ngModel)]="room.roomNumber" name="roomNumber">
+    </div>
+    <div>
+        <label>
+            Description
+        </label>
+        <input class="description" type="text" [(ngModel)]="room.description" name="description">
+    </div>
+
+    <button class="button" type="submit">Create</button>
+</form>

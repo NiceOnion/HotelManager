@@ -1,1 +1,18 @@
-<p>hotel-details works!</p>
+<div *ngIf="hotel">
+    <div>
+<h3>{{hotel.name}}</h3>
+        <a *ngFor="let room of hotel.rooms" [title]="'detials of room ' + room.roomNumber" [routerLink]="'Hotel/' + hotel.id + '/Room/' + room.id" >
+            {{room.roomNumber}}
+        </a>
+    </div>
+    <div>
+        <a [title]="'add room'" [routerLink]="'Hotel/' + hotel.id + '/update'">Update Hotel</a>
+    </div>
+    <div>
+        <a [title]="'add a room'" [routerLink]="'Hotel/Room/Add'">New Room</a>
+    </div>
+
+</div>
+<div *ngIf="!hotel">
+    <p>This does not look right...</p>
+</div>

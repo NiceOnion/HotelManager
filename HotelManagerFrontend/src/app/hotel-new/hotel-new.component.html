@@ -1,1 +1,11 @@
-<p>hotel-new works!</p>
+<h3>new Hotel</h3>
+<form (ngSubmit)="onSubmit()">
+    <div>
+        <label>
+            Name
+        </label>
+        <input class="username" type="text" [(ngModel)]="hotel.name" name="username">
+    </div>
+
+    <button class="button" type="submit">Create</button>
+</form>

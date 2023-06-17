@@ -1,1 +1,16 @@
-<p>hotel-update works!</p>
+<div *ngIf="hotel">
+    <p>Update</p>
+    <form (ngSubmit)="onSubmit()">
+        <div>
+            <label>
+                Name
+            </label>
+            <input class="username" type="text" [(ngModel)]="hotel.name" name="username">
+        </div>
+
+        <button class="button" type="submit">Update</button>
+    </form>
+</div>
+<div *ngIf="!hotel">
+    <p>something went wrong!</p>
+</div>

@@ -15,6 +15,9 @@ import { HotelDetailsComponent } from './app/hotel-details/hotel-details.compone
 import { HotelNewComponent } from './app/hotel-new/hotel-new.component';
 import { HotelUpdateComponent } from './app/hotel-update/hotel-update.component';
 import { DashboardComponent } from './app/dashboard/dashboard.component';
+import { RoomDetailsComponent } from './app/room-details/room-details.component';
+import { RoomNewComponent } from './app/room-new/room-new.component';
+import { RoomUpdateComponent } from './app/room-update/room-update.component';
 
 @NgModule({
     imports: [
@@ -29,10 +32,11 @@ import { DashboardComponent } from './app/dashboard/dashboard.component';
             {path: 'Account/:accountID/Update', component: AccountUpdateComponent},
             {path: 'Hotel', component: HotelListComponent},
             {path: 'Hotel/Post', component: HotelNewComponent},
-            {path: 'Hotel/:HotelID', component: HotelDetailsComponent},
-            {path: 'Hotel/:HotelID/Update', component: HotelUpdateComponent},
-
-
+            {path: 'Hotel/:hotelID', component: HotelDetailsComponent},
+            {path: 'Hotel/:hotelID/Update', component: HotelUpdateComponent},
+            {path: 'Hotel/:hotelID/Room/:roomID', component: RoomDetailsComponent},
+            {path: 'Hotel/:hotelID/Room/:roomID/Update', component: RoomUpdateComponent},
+            {path: 'Hotel/:hotelID/Room/Post', component: HotelUpdateComponent},
         ]),
         FormsModule
     ],
@@ -47,6 +51,9 @@ import { DashboardComponent } from './app/dashboard/dashboard.component';
         HotelNewComponent,
         HotelUpdateComponent,
         DashboardComponent,
+        RoomDetailsComponent,
+        RoomNewComponent,
+        RoomUpdateComponent,
   ],
     bootstrap: [
         AppComponent

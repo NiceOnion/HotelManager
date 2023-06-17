@@ -18,6 +18,8 @@ public class Reservation {
 
     private String description;
     private Status status;
+    private Long accountId;
+    private Long roomId;
 
     public Reservation() {}
 
