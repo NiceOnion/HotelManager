@@ -1,11 +1,11 @@
-name: FrontendCI
+name: Frontend2CI
 on:
   push:
     paths:
-      - 'HotelManagerFrontend/**'
+      - 'HotelManagerFrontend2/**'
   pull_request:
     paths:
-      - 'HotelManagerFrontend/**'
+      - 'HotelManagerFrontend2/**'
 jobs:
   build-angular:
     runs-on: ubuntu-latest
