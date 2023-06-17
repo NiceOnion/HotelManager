@@ -1,0 +1,27 @@
+name: FrontendCI
+on:
+  push:
+    paths:
+      - 'HotelManagerFrontend/**'
+  pull_request:
+    paths:
+      - 'HotelManagerFrontend/**'
+jobs:
+  build-angular:
+    runs-on: ubuntu-latest
+        
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    
+    - name: run tests
+      run: |
+        npm ci
+        npm run build:ci
+      working-directory: ./HotelManagerFrontend
