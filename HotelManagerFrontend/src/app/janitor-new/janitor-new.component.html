@@ -1,1 +1,10 @@
-<p>janitor-new works!</p>
+<p>new Janitor</p>
+<form (ngSubmit)="onSubmit()">
+    <div>
+        <label>
+            Name
+        </label>
+        <input class="name" type="text" [(ngModel)]="janitor.name" name="username">
+    </div>
+    <button class="button" type="submit">Create</button>
+</form>

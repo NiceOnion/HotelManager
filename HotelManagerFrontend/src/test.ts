@@ -5,10 +5,10 @@ import 'zone.js/dist/zone-testing';
 import 'zone.js/dist/zone';
 
 // Import all of your tests
-import './app/spec/account.service.test.js';
+import './app/spec/janitor.service.test.js';
 import './app/spec/base-urlservice.service.spec';
-import './app/spec/account-list.component.spec';
-import './app/spec/account-details.component.spec';
+import './app/spec/janitor-list.component.spec';
+import './app/spec/janitor-details.component.spec';
 // ...and so on
 
 // Set up the test bed environment

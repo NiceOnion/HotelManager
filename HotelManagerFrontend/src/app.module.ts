@@ -21,6 +21,7 @@ import { RoomUpdateComponent } from './app/room-update/room-update.component';
 import { JanitorListComponent } from './app/janitor-list/janitor-list.component';
 import { JanitorDetailsComponent } from './app/janitor-details/janitor-details.component';
 import { JanitorNewComponent } from './app/janitor-new/janitor-new.component';
+import { JanitorUpdateComponent } from './app/janitor-update/janitor-update.component';
 
 @NgModule({
     imports: [
@@ -36,12 +37,15 @@ import { JanitorNewComponent } from './app/janitor-new/janitor-new.component';
             {path: 'Hotel', component: HotelListComponent},
             {path: 'Hotel/Post', component: HotelNewComponent},
             {path: 'Hotel/:hotelID', component: HotelDetailsComponent},
-            {path: 'Hotel/:hotelID/Update', component: HotelUpdateComponent},
             {path: 'Hotel/:hotelID/Room/Add', component: RoomNewComponent},
+            {path: 'Hotel/:hotelID/Update', component: HotelUpdateComponent},
+            {path: 'Hotel/:hotelID/Room/Post', component: HotelUpdateComponent},
             {path: 'Hotel/:hotelID/Room/:roomID', component: RoomDetailsComponent},
             {path: 'Hotel/:hotelID/Room/:roomID/Update', component: RoomUpdateComponent},
-            {path: 'Hotel/:hotelID/Room/Post', component: HotelUpdateComponent},
-
+            {path: 'Janitor', component: JanitorListComponent},
+            {path: 'Janitor/Post', component: JanitorNewComponent},
+            {path: 'Janitor/:janitorID', component: JanitorDetailsComponent},
+            {path: 'Janitor/:janitorID/Update', component: JanitorUpdateComponent}
         ]),
         FormsModule
     ],
@@ -62,6 +66,7 @@ import { JanitorNewComponent } from './app/janitor-new/janitor-new.component';
         JanitorListComponent,
         JanitorDetailsComponent,
         JanitorNewComponent,
+        JanitorUpdateComponent,
   ],
     bootstrap: [
         AppComponent

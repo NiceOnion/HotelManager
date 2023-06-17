@@ -1,1 +1,14 @@
-<p>janitor-details works!</p>
+<div *ngIf="janitor">
+    <h3>{{janitor!.name}}'s details</h3>
+    <h4> {{janitor!.id}}</h4>
+    <p>Works at:</p>
+        <div *ngFor="let hotel of janitor.hotels">
+            {{hotel!.name}}
+        </div>
+    <div>
+        <a [routerLink]="'../' + janitor.id +  '/Update'">Update Account</a>
+    </div>
+    <button type="button" (click)="deleteAccount(janitor)">Delete</button>
+</div>
+<div *ngIf="!janitor"> The Janitors are on a break</div>
+

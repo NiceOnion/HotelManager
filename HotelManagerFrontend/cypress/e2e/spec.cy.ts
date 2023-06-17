@@ -1,5 +1,5 @@
 describe('Add Account', () => {
-  it('Adds an account to the list of accounts', () => {
+  it('Adds an janitor to the list of janitors', () => {
     cy.visit('http://localhost:4200')
 
     cy.contains('accounts').click()

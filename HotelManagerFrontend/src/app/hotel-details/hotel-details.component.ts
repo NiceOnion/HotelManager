@@ -19,13 +19,24 @@ export class HotelDetailsComponent {
         const HotelIdFromRoute = routeParams.get('hotelID');
         console.log(HotelIdFromRoute);
         if (typeof HotelIdFromRoute === "string") {
-            this.hotelService.GetOneHotel(parseInt(HotelIdFromRoute)).subscribe(data => {
-                this.hotel = data;
+            this.hotelService.GetOneHotel(parseInt(HotelIdFromRoute)).subscribe((response: any) => {
+                // Handle success or any additional logic after the janitor is deleted
+                console.log('hotel found successfully', response);
+                this.hotel = response;
+            }, (error) => {
+                // Handle error if the janitor deletion fails
+                console.error('Error finding hotel:', error);
             });
         }
     }
 
     deleteHotel(hotel: Hotel): void{
-        this.hotelService.Delete(hotel);
+        this.hotelService.Delete(hotel).subscribe((response: any) => {
+            // Handle success or any additional logic after the janitor is deleted
+            console.log('hotel deleted successfully', response);
+        }, (error) => {
+            // Handle error if the janitor deletion fails
+            console.error('Error deleting hotel:', error);
+        });
     }
 }

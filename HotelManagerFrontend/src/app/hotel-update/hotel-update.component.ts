@@ -16,15 +16,24 @@ export class HotelUpdateComponent {
     const routeParams = this.route.snapshot.paramMap;
     const hotelIdFromRoute = routeParams.get('hotelID')
     if (typeof hotelIdFromRoute === "string") {
-      this.hotelService.GetOneHotel(parseInt(hotelIdFromRoute, 10)).subscribe(data => {
-        this.hotel = data;
+      this.hotelService.GetOneHotel(parseInt(hotelIdFromRoute, 10)).subscribe((response: any) => {
+        // Handle success or any additional logic after the janitor is deleted
+        console.log('Hotel found successfully', response);
+        this.hotel = response;
+      }, (error) => {
+        // Handle error if the janitor deletion fails
+        console.error('Error finding hotel:', error);
       });
     }
   }
 
   onSubmit(): void{
-    this.hotelService.PutHotel(this.hotel).subscribe((response) => {
-      console.log(response)
+    this.hotelService.PutHotel(this.hotel).subscribe((response: any) => {
+      // Handle success or any additional logic after the janitor is deleted
+      console.log('Hotel updated successfully', response);
+    }, (error) => {
+      // Handle error if the janitor deletion fails
+      console.error('Error updating hotel:', error);
     });
   }
 }

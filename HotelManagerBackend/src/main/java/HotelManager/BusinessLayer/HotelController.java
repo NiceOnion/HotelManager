@@ -1,10 +1,7 @@
 package HotelManager.BusinessLayer;
 
 import HotelManager.BusinessLayer.ErrorHandling.HotelNotFoundException;
-import HotelManager.DAL.Hotel;
-import HotelManager.DAL.HotelRepository;
-import HotelManager.DAL.Room;
-import HotelManager.DAL.RoomRepository;
+import HotelManager.DAL.*;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,10 +14,12 @@ public class HotelController {
 
     private final HotelRepository hotelRepository;
     private final RoomRepository roomRepository;
+    private final JanitorRepository janitorRepository;
 
-    HotelController(HotelRepository hRepo, RoomRepository rRepo){
+    HotelController(HotelRepository hRepo, RoomRepository rRepo, JanitorRepository jRepo){
         this.hotelRepository = hRepo;
         this.roomRepository = rRepo;
+        this.janitorRepository = jRepo;
     }
 
     @GetMapping(path = "All", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -34,7 +33,7 @@ public class HotelController {
         return hotelRepository.findById(id).orElseThrow(() -> new HotelNotFoundException(id));
     }
 
-    @PostMapping
+    @PostMapping("New")
     public Hotel newHotel(@RequestBody Hotel nHotel){
         return hotelRepository.save(nHotel);
     }
@@ -46,6 +45,15 @@ public class HotelController {
 
     @DeleteMapping("{id}")
     public void deleteHotel(@PathVariable Long id){
+        Hotel hotel = hotelRepository.findById(id).get();
+        for (Room room: hotel.getRooms())
+        {
+            roomRepository.deleteById(room.getId());
+        }
+        for(Janitor janitor: hotel.getJanitors()){
+            janitor.getHotels().remove(hotel);
+            janitorRepository.save(janitor);
+        }
         hotelRepository.deleteById(id);
     }
 

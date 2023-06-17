@@ -5,7 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
-  selector: 'app-account-details',
+  selector: 'app-janitor-details',
   templateUrl: './account-details.component.html',
   styleUrls: ['./account-details.component.css']
 })
@@ -19,19 +19,24 @@ export class AccountDetailsComponent {
     const routeParams = this.route.snapshot.paramMap;
     const accountIdFromRoute = routeParams.get('accountID')
     if (typeof accountIdFromRoute === "string") {
-      this.accountService.getOneAccount(parseInt(accountIdFromRoute, 10)).subscribe(data => {
-        this.account = data;
+      this.accountService.getOneAccount(parseInt(accountIdFromRoute, 10)).subscribe((response: any) => {
+        // Handle success or any additional logic after the janitor is deleted
+        console.log('Account deleted successfully', response);
+        this.account = response;
+      }, (error) => {
+        // Handle error if the janitor deletion fails
+        console.error('Error deleting janitor:', error);
       });
     }
   }
 
   deleteAccount(account: account): void {
-    this.accountService.deleteAccount(account.id).subscribe(() => {
-      // Handle success or any additional logic after the account is deleted
-      console.log('Account deleted successfully');
+    this.accountService.deleteAccount(account.id).subscribe((response: any) => {
+      // Handle success or any additional logic after the janitor is deleted
+      console.log('Account deleted successfully', response);
     }, (error) => {
-      // Handle error if the account deletion fails
-      console.error('Error deleting account:', error);
+      // Handle error if the janitor deletion fails
+      console.error('Error deleting janitor:', error);
     });
   }
 

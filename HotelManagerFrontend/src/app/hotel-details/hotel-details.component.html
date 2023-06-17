@@ -14,6 +14,9 @@
     <div>
         <a [title]="'Add a room'" [routerLink]="'./Room/Add'">New Room</a>
     </div>
+    <div>
+        <button type="button" [title]="'Remove Hotel'"  (click)="deleteHotel(hotel)">Delete Hotel</button>
+    </div>
 
 </div>
 <div *ngIf="!hotel">

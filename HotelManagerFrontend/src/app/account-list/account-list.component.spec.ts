@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AccountListComponent } from './account-list.component';
-import { AccountService } from '../Services/account.service';
+import { JanitorService } from '../Services/account.service';
 
 describe('AccountListComponent', () => {
   let component: AccountListComponent;
@@ -12,7 +12,7 @@ describe('AccountListComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AccountListComponent],
       imports: [HttpClientTestingModule], // Import the HttpClientTestingModule
-      providers: [AccountService], // Provide the AccountService
+      providers: [JanitorService], // Provide the JanitorService
     }).compileComponents();
 
     fixture = TestBed.createComponent(AccountListComponent);

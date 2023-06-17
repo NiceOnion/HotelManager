@@ -44,13 +44,15 @@ public class RoomController {
     }
 
     @PutMapping("{id}")
-    public Room updateAccount(@RequestBody Room room, @PathVariable Long id) {
+    public Room updateRoom(@RequestBody Room room, @PathVariable Long id) {
         room.setId(id);
         return roomRepository.save(room);
     }
 
     @DeleteMapping("{id}")
-    public void deleteAccount(@PathVariable Long id) {
+    public void deleteRoom(@PathVariable Long id) {
+        hotelRepository.findById(roomRepository.findById(id).get().getHotel().getID())
+                .get().getRooms().remove(roomRepository.findById(id).get());// Get hotel, and remove the instance of this room
         roomRepository.deleteById(id);
     }
 }

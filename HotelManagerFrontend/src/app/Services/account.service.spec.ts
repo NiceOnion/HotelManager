@@ -1,17 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { AccountService } from './account.service';
+import { JanitorService } from './account.service';
 
 describe('AccountService', () => {
-  let service: AccountService;
+  let service: JanitorService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [AccountService],
+      providers: [JanitorService],
     });
-    service = TestBed.inject(AccountService);
+    service = TestBed.inject(JanitorService);
     httpMock = TestBed.inject(HttpTestingController);
   });
 
@@ -19,7 +19,7 @@ describe('AccountService', () => {
     httpMock.verify();
   });
 
-  it('should return a list of accounts', () => {
+  it('should return a list of janitors', () => {
     const mockAccounts = [
       { id: 1, password: '1', role: '', username: 'Account 1' },
       { id: 2, password: '2', role: '', username: 'Account 2' },

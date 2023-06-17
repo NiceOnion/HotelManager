@@ -18,19 +18,24 @@ export class RoomDetailsComponent {
     const routeParams = this.route.snapshot.paramMap;
     const roomIdFromRoute = routeParams.get('roomID');
     if(typeof roomIdFromRoute === "string"){
-      this.roomService.GetOne(parseInt(roomIdFromRoute)).subscribe( data =>{
-        this.room = data;
+      this.roomService.GetOne(parseInt(roomIdFromRoute)).subscribe((response: any) => {
+        // Handle success or any additional logic after the janitor is deleted
+        console.log('Account getting room', response);
+        this.room = response;
+      }, (error) => {
+        // Handle error if the janitor deletion fails
+        console.error('Error finding room:', error);
       });
     }
   }
 
   DeleteRoom(room : Room): void{
     this.roomService.DeleteRoom(room).subscribe(() => {
-      // Handle success or any additional logic after the account is deleted
-      console.log('Account deleted successfully');
+      // Handle success or any additional logic after the janitor is deleted
+      console.log('Room deleted successfully');
     }, (error) => {
-      // Handle error if the account deletion fails
-      console.error('Error deleting account:', error);
+      // Handle error if the janitor deletion fails
+      console.error('Error deleting room:', error);
     });
   }
 }

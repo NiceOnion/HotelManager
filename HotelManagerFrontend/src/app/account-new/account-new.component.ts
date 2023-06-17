@@ -3,7 +3,7 @@ import {account} from "../DataObjects/account";
 import {AccountService} from "../Services/account.service";
 
 @Component({
-  selector: 'app-account-new',
+  selector: 'app-janitor-new',
   templateUrl: './account-new.component.html',
   styleUrls: ['./account-new.component.css']
 })
@@ -19,6 +19,13 @@ export class AccountNewComponent {
   }
 
   onSubmit(): void{
-    this.accountService.postAccount(this.account);
+    this.accountService.postAccount(this.account).subscribe(
+        (response) => {
+          console.log("User created" + response);
+        },
+        (error) => {
+          console.error('Error creating user: ', error)
+        }
+    );
   }
 }

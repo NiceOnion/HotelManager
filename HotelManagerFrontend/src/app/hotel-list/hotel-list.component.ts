@@ -15,8 +15,13 @@ export class HotelListComponent {
     }
 
     ngOnInit(): void {
-        this.hotelService.GetAllHotels().subscribe(data => {
-            this.hotels = data;
+        this.hotelService.GetAllHotels().subscribe((response: any) => {
+            // Handle success or any additional logic after the janitor is deleted
+            console.log('Hotels found successfully', response);
+            this.hotels = response;
+        }, (error) => {
+            // Handle error if the janitor deletion fails
+            console.error('Error finding hotels:', error);
         });
     }
 }

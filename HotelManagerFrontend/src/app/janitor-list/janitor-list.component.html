@@ -1,1 +1,15 @@
-<p>janitor-list works!</p>
+<h2>A list of Janitors</h2>
+
+<div *ngFor="let janitor of janitors">
+    <h3>
+        <a [title]="janitor.name + ' details'" [routerLink]="['/Janitor', janitor.id]">
+            {{janitor.name}}
+        </a>
+    </h3>
+</div>
+
+<p>
+    <a routerLink="/Janitor/Post">
+        Add Janitor
+    </a>
+</p>

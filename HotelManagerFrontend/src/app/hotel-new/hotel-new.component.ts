@@ -21,7 +21,12 @@ export class HotelNewComponent {
   }
 
   onSubmit(){
-    this.hotelService.PostHotel(this.hotel)
+    this.hotelService.PostHotel(this.hotel).subscribe((response) => {
+          console.log("fine", response);
+        },
+        (error) => {
+          console.error('error', error)
+        });
   }
 
 }

@@ -2,7 +2,7 @@
     <h3>{{room!.roomNumber}}'s details</h3>
     <h4> {{room!.description}}</h4>
     <div>
-        <a [routerLink]="'../' + room.id +  '/Update'">Update Account</a>
+        <a [routerLink]="'../' + room.id +  '/Update'">Update Room</a>
     </div>
     <button type="button" (click)="DeleteRoom(room)">Delete</button>
 </div>

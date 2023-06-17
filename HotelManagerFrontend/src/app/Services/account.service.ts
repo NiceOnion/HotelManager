@@ -13,6 +13,7 @@ export class AccountService {
     header: HttpHeaders = new HttpHeaders({
         'Content-Type': 'application/json',
     })
+
     constructor(private http: HttpClient, public baseUrlService: BaseUrlService) {
     }
 
@@ -22,7 +23,7 @@ export class AccountService {
         return this.http.get<account[]>(url)
     }
 
-    public getOneAccount(id: number): Observable<account> {
+    public getOneAccount(id: number): Observable<any> {
         const url = this.baseUrlService.getURL() + 'Account/One/' + id;
         console.log(url)
         return this.http.get<account>(url).pipe(
@@ -32,27 +33,23 @@ export class AccountService {
             ));
     }
 
-    public postAccount(account: account): Observable<any> {
-        console.log("You have called the post method")
-        const url = this.baseUrlService.getURL() + 'Account/id';
-        console.log(account)
-        console.log("The request is about to be sent! " + )
-        return this.http.post(url, body);
+    public postAccount(account: any): Observable<any> {
+        const url = this.baseUrlService.getURL() + 'Account/New';
+        console.log(this.http.post(url, JSON.stringify(account), {'headers': this.header}))
+        return this.http.post(url, JSON.stringify(account), {'headers': this.header});
     }
 
-    deleteAccount(id: number) {
+    deleteAccount(id: number): Observable<any> {
         const url = this.baseUrlService.getURL() + 'Account/' + id;
         return this.http.delete(url)
     }
 
     putAccount(account: account | undefined): Observable<any> {
         if (!account) {
-            throw new Error('Invalid account');
+            throw new Error('Invalid janitor');
         }
-
         const url = this.baseUrlService.getURL() + 'Account/' + account.id;
-        console.log("Sending: " + account.username + " --- " + account.id + " To: " + url);
-        return this.http.put(url, account, { headers: this.header }).pipe(
+        return this.http.put(url, account, {headers: this.header}).pipe(
             catchError((error: any) => {
                 console.log(error);
                 return throwError(error);

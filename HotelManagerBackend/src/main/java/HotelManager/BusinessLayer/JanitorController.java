@@ -35,32 +35,38 @@ public class JanitorController {
         return null;
     }
 
-    @PostMapping
+    @PostMapping("New")
     public Janitor Post(@RequestBody Janitor janitor){
         return janitorRepository.save(janitor);
     }
 
     @PostMapping("{janitorID}/Hotels/{hotelID}")
-    public ResponseEntity<String> HireJanitor(@PathVariable Long janitorID, @PathVariable Long hotelID){
+    public String HireJanitor(@PathVariable Long janitorID, @PathVariable Long hotelID){
         Janitor janitor = janitorRepository.findById(janitorID).orElse(null);
         Hotel hotel = hotelRepository.findById(hotelID).orElse(null);
-
         if(janitor != null && hotel != null){
             janitor.getHotels().add(hotel);
             janitorRepository.save(janitor);
-            return ResponseEntity.ok("Janitor " + janitor.getName() + " is now hired!");
+            return ("Janitor " + janitor.getName() + " is now hired!");
         }
 
-        return ResponseEntity.badRequest().body("Something went wrong: Invalid Janitor/Hotel ID");
+        return ("Something went wrong: Invalid Janitor/Hotel ID");
     }
 
-    @PutMapping
+    @PutMapping("{id}")
     public Janitor Put(@RequestBody Janitor janitor){
         return janitorRepository.save(janitor);
     }
 
-    @DeleteMapping()
-    public void Delete(@RequestBody Janitor janitor){
+    @DeleteMapping("{janitorID}")
+    public void Delete(@PathVariable Long janitorID){
+        Janitor janitor = janitorRepository.findById(janitorID).get();
+        List<Hotel> hotels = janitor.getHotels();
+        for ( Hotel hotel : hotels)
+        {
+            hotel.getJanitors().remove(janitor);
+            hotelRepository.save(hotel);
+        }
         janitorRepository.delete(janitor);
     }
 

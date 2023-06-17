@@ -5,7 +5,7 @@ import {account} from "../DataObjects/account";
 import {AccountService} from "../Services/account.service";
 
 @Component({
-  selector: 'app-account-list',
+  selector: 'app-janitor-list',
   templateUrl: './account-list.component.html',
   styleUrls: ['./account-list.component.css']
 })
@@ -16,10 +16,13 @@ export class AccountListComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.accountService.getAllAccounts().subscribe(data =>{
-      console.log(data);
-      this.accounts = data;
-      console.log(this.accounts[1].id);
+    this.accountService.getAllAccounts().subscribe((response: any) => {
+      // Handle success or any additional logic after the janitor is deleted
+      this.accounts = response;
+    }, (error) => {
+      // Handle error if the janitor deletion fails
+      console.error('Error getting janitor list:', error);
     });
+
+    };
   }
-}
